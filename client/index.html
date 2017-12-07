@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="format-detection" content="email=no" />
+    <title>前端内部聊天室</title>
+    <link href="./style.css" rel='stylesheet' type='text/css' />
+    <script src="http://localhost:3000/socket.io/socket.io.js"></script>
+</head>
+
+<body>
+    <h1 class="title1">前端内部聊天室</h1>
+    <div class="login-form" id="login">
+        <div class="clear"> </div>
+        <div class="avtar">
+            <div class="choose">请选择性别：</div>
+            <span class="male1 rad" onclick="sockInit.choose(this,'male');"></span>
+            <span class="female1 rad" onclick="sockInit.choose(this,'female');"></span>
+        </div>
+        <div style="position:relative;height:100px;">
+            <!--<input type="text" class="text" placeholder="请输入昵称，加入聊天室" id="userName" name="userName">-->
+            <div class="choose" id="chooseName">请选择昵称：</div>
+            <div class="userName" id="userName">平凡之路</div><span class="random" onclick="sockInit.rowName()"></span>
+        </div>
+    </div>
+    <div class="signin" id="signin">
+        <span class="submit" onclick="sockInit.userNameSubmit();"></span>
+    </div>
+
+    <div class="sockInit" id="sockInit" style="display:none;">
+        <div class="title">
+            <div style="line-height: 28px;color:rgb(131,143,163);">
+                <span style="text-align: left;margin-left:10px;">前端内部聊天室</span>
+                <span style="float: right;margin-right: 10px ">
+                    <span id="showUserName"></span> |
+                    <a href="javascript:;" onclick="sockInit.logout() " style="color:rgb(131,143,163);">退出</a>
+                </span>
+            </div>
+        </div>
+        <div id="doc">
+            <div class="container" id="sockInit" style="overflow: hidden;">
+                <div class="message">
+                    <div id="message" style="overflow-y:scroll;"></div>
+                    <div class="input-box">
+                        <div class="expreTip"></div>
+                        <div class="write">
+                            <textarea type="text" placeholder="输入聊天内容" id="content" name="content"></textarea>
+                        </div>
+                        <div class="buttonCon" >
+                            <span class="expression" onclick="sockInit.imgInit(40,'gif','4800');" style="background:url(./img_gif/4800/0.gif) no-repeat center center;background-size:cover;"></span>
+                            <span class="expression" onclick="sockInit.imgInit(15,'gif','4810');" style="background:url(./img_gif/4810/00.gif) no-repeat center center;background-size:cover;"></span>
+                            <span class="expression" onclick="sockInit.imgInit(10,'jpg','4851');" style="background:url(./img_gif/4851/00.jpg) no-repeat center center;background-size:cover;"></span>
+                            <span class="expression" onclick="sockInit.imgInit(26,'gif','4866');" style="background:url(./img_gif/4866/00.gif) no-repeat center center;background-size:cover;"></span>
+                            <span class="expression" onclick="sockInit.imgInit(10,'gif','4877');" style="background:url(./img_gif/4877/00.gif) no-repeat center center;background-size:cover;"></span>
+                            <span class="expression" onclick="sockInit.imgInit(16,'gif','4895');" style="background:url(./img_gif/4895/00.gif) no-repeat center center;background-size:cover;"></span>
+                            <span class="expression" onclick="sockInit.imgInit(18,'gif','4922');" style="background:url(./img_gif/4922/00.gif) no-repeat center center;background-size:cover;"></span>
+                            <span class="expression" onclick="sockInit.imgInit(19,'gif','4923');" style="background:url(./img_gif/4923/00.gif) no-repeat center center;background-size:cover;"></span>
+                            <div class="mesSubmit" type="button" id="mjr_send" onclick="sockInit.submit();">提交</div>
+                        </div>
+                        <div style="height:20px;"></div>
+                    </div>
+                </div>
+                <div id="onLineCounts">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="foot"></div>
+    <script type="text/javascript " src="./jquery-3.1.1.min.js "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.3/moment.min.js"></script>
+    <script type="text/javascript " src="./client.js "></script>
+</body>
+
+</html>
